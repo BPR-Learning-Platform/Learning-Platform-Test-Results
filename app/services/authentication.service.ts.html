@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">34.78% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/23</span>
+                <span class='fraction'>8/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/10</span>
+                <span class='fraction'>4/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">34.78% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/23</span>
+                <span class='fraction'>8/18</span>
             </div>
         
             
@@ -115,18 +115,7 @@
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,25 +131,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -178,7 +156,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -190,7 +168,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable } from '@angular/core';
-import { catchError, Observable, NEVER, throwError, map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {environment} from "../../environments/environment.prod";
 &nbsp;
@@ -202,29 +180,18 @@ export class AuthenticationService {
 &nbsp;
   constructor(private http: HttpClient) { }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  handleLoginRequestErrors(</span>obs: Observable&lt;any&gt;): Observable&lt;any&gt;{
-<span class="cstat-no" title="statement not covered" >    return obs.pipe(catchError(<span class="fstat-no" title="function not covered" >err </span>=&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (!!err.status &amp;&amp; err.status === 401){</span>
-<span class="cstat-no" title="statement not covered" >          localStorage.removeItem("email");</span>
-<span class="cstat-no" title="statement not covered" >          return NEVER;</span>
-        }
-<span class="cstat-no" title="statement not covered" >        return throwError(err);</span>
-      }),
-      map(<span class="fstat-no" title="function not covered" >res </span>=&gt; {
-<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (res.status === 200) {</span>
-<span class="cstat-no" title="statement not covered" >          localStorage.setItem("token", "my-super-secret-token-from-server");</span>
-<span class="cstat-no" title="statement not covered" >          localStorage.setItem("name", res.body.toString());</span>
-        }
-<span class="cstat-no" title="statement not covered" >        return res;</span>
-      }));
-  }
-&nbsp;
 <span class="fstat-no" title="function not covered" >  login(</span>email: string, password: string): Observable&lt;any&gt; {
     let apiUrl = <span class="cstat-no" title="statement not covered" >baseUrl + `users/signin`;</span>
-<span class="cstat-no" title="statement not covered" >    localStorage.setItem("email", email);</span>
-<span class="cstat-no" title="statement not covered" >    return this.handleLoginRequestErrors(this.http.post&lt;any&gt;(apiUrl,</span>
+<span class="cstat-no" title="statement not covered" >    return this.http.post&lt;any&gt;(apiUrl,</span>
       {email: email, password: password},
-      {observe: "response"}));
+      {observe: "response"}).pipe(map(<span class="fstat-no" title="function not covered" >res </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >      <span class="missing-if-branch" title="if path not taken" >I</span>if (res.status === 200) {</span>
+<span class="cstat-no" title="statement not covered" >        localStorage.setItem("email", email.toLowerCase());</span>
+<span class="cstat-no" title="statement not covered" >        localStorage.setItem("token", "my-super-secret-token-from-server");</span>
+<span class="cstat-no" title="statement not covered" >        localStorage.setItem("name", res.body.toString());</span>
+      }
+<span class="cstat-no" title="statement not covered" >      return res;</span>
+    }));
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  signup(</span>name: string, email: string, password: string): Observable&lt;any&gt; {
@@ -259,7 +226,7 @@ export class AuthenticationService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-09-14T12:44:14.953Z
+                at 2022-09-21T07:47:51.518Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
