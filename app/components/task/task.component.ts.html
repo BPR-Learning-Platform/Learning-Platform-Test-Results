@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">52.63% </span>
+                <span class="strong">53.84% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/19</span>
+                <span class='fraction'>14/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.55% </span>
+                <span class="strong">56% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/18</span>
+                <span class='fraction'>14/25</span>
             </div>
         
             
@@ -120,8 +120,14 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,6 +151,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -161,11 +168,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -173,15 +184,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit } from '@angular/core';
 import {LpRestService} from "../../services/lp-rest.service";
 import {AuthenticationService} from "../../services/authentication.service";
 import {LPTask} from "../../models/lptask.model";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 &nbsp;
 interface Alert {
   type: string;
@@ -204,6 +217,7 @@ export class TaskComponent implements OnInit {
 &nbsp;
   tasks: Array&lt;LPTask&gt; = [];
   taskIndex: number = 0;
+  correctAnswers: number = 0;
   alertToShow?: Alert = undefined;
   number = '';
 &nbsp;
@@ -218,20 +232,27 @@ export class TaskComponent implements OnInit {
 <span class="fstat-no" title="function not covered" >  async </span>getNextTask(event: any): Promise&lt;void&gt; {
 <span class="cstat-no" title="statement not covered" >    if (Number(event.target.value) === this.tasks[this.taskIndex].answer) {</span>
 <span class="cstat-no" title="statement not covered" >      this.alertToShow = ALERTS[0];</span>
+<span class="cstat-no" title="statement not covered" >      this.correctAnswers++;</span>
     } else {
 <span class="cstat-no" title="statement not covered" >      this.alertToShow = ALERTS[1];</span>
     }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    await new Promise(<span class="fstat-no" title="function not covered" >f </span>=&gt; <span class="cstat-no" title="statement not covered" >setTimeout(f, 3000))</span>;</span>
-<span class="cstat-no" title="statement not covered" >    this.taskIndex++;</span>
+<span class="cstat-no" title="statement not covered" >    if (this.taskIndex &lt; this.tasks.length - 1)</span>
+<span class="cstat-no" title="statement not covered" >      this.taskIndex++;</span>
+    else
+<span class="cstat-no" title="statement not covered" >      this.getTasks();</span>
 <span class="cstat-no" title="statement not covered" >    this.number = '';</span>
 <span class="cstat-no" title="statement not covered" >    this.alertToShow = undefined;</span>
   }
 &nbsp;
   getTasks(): void{
-    this.lpRestService.getTasks(this.authService.getCurrentUserId()!).subscribe(<span class="fstat-no" title="function not covered" >res </span>=&gt; {
+    const correctPercentage: number = Math.floor(this.correctAnswers / this.tasks.length * 100);
+    this.lpRestService.getTasks(this.authService.getCurrentUserId()!, correctPercentage).subscribe(<span class="fstat-no" title="function not covered" >res </span>=&gt; {
 <span class="cstat-no" title="statement not covered" >      this.tasks = res;</span>
     });
+    this.correctAnswers = 0;
+    this.taskIndex = 0;
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -241,7 +262,7 @@ export class TaskComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-09-21T13:16:27.609Z
+                at 2022-09-28T13:57:17.101Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
