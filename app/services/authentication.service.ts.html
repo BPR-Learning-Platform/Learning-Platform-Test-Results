@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">52% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/22</span>
+                <span class='fraction'>13/25</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">63.63% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/10</span>
+                <span class='fraction'>7/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">52% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/22</span>
+                <span class='fraction'>13/25</span>
             </div>
         
             
@@ -126,7 +126,13 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -150,6 +156,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -163,6 +170,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -174,11 +182,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -187,6 +195,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable } from '@angular/core';
@@ -213,6 +225,7 @@ export class AuthenticationService {
 <span class="cstat-no" title="statement not covered" >        localStorage.setItem("token", "my-super-secret-token-from-server");</span>
 <span class="cstat-no" title="statement not covered" >        localStorage.setItem("name", res.body.Name.toString());</span>
 <span class="cstat-no" title="statement not covered" >        localStorage.setItem("userId", res.body.UserId.toString());</span>
+<span class="cstat-no" title="statement not covered" >        localStorage.setItem("type", res.body.Type.toString());</span>
       }
 <span class="cstat-no" title="statement not covered" >      return res;</span>
     }));
@@ -230,6 +243,7 @@ export class AuthenticationService {
     localStorage.removeItem("name");
     localStorage.removeItem("email");
     localStorage.removeItem("userId");
+    localStorage.removeItem("type");
   }
 &nbsp;
   isUserLoggedIn(): boolean {
@@ -237,7 +251,7 @@ export class AuthenticationService {
   }
 &nbsp;
   isUserTeacher(): boolean {
-    return true;
+    return localStorage.getItem("type") === "T";
   }
 &nbsp;
   getCurrentUserId(): string | null{
@@ -251,6 +265,10 @@ export class AuthenticationService {
 <span class="fstat-no" title="function not covered" >  getCurrentEmail(</span>): string | null{
 <span class="cstat-no" title="statement not covered" >    return localStorage.getItem("email");</span>
   }
+&nbsp;
+  isUserStudent():boolean {
+    return localStorage.getItem("type") === "S";
+  }
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -259,7 +277,7 @@ export class AuthenticationService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-10-12T12:59:00.772Z
+                at 2022-10-26T10:05:23.371Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
