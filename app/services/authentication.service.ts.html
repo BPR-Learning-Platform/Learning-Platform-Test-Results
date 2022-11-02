@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">47.36% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/24</span>
+                <span class='fraction'>9/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">36.36% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>4/11</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">47.36% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/24</span>
+                <span class='fraction'>9/19</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -121,14 +121,8 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,16 +133,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -164,11 +155,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -197,6 +183,7 @@
 import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {environment} from "../../environments/environment.prod";
+import {NewUser, User} from "../models/user.model";
 &nbsp;
 const baseUrl = environment.learningPlatformApiUrl;
 @Injectable({
@@ -206,36 +193,28 @@ export class AuthenticationService {
 &nbsp;
   constructor(private http: HttpClient) { }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  login(</span>email: string, password: string): Observable&lt;any&gt; {
+<span class="fstat-no" title="function not covered" >  login(</span>email: string, password: string): Observable&lt;User&gt; {
     let apiUrl = <span class="cstat-no" title="statement not covered" >baseUrl + `users/signin`;</span>
 <span class="cstat-no" title="statement not covered" >    return this.http.post&lt;any&gt;(apiUrl,</span>
       {email: email, password: password},
       {observe: "response"}).pipe(map(<span class="fstat-no" title="function not covered" >res </span>=&gt; {
+        let user: User = <span class="cstat-no" title="statement not covered" >res.body;</span>
 <span class="cstat-no" title="statement not covered" >      <span class="missing-if-branch" title="if path not taken" >I</span>if (res.status === 200) {</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        localStorage.setItem("email", email.toLowerCase());</span>
 <span class="cstat-no" title="statement not covered" >        localStorage.setItem("token", "my-super-secret-token-from-server");</span>
-<span class="cstat-no" title="statement not covered" >        localStorage.setItem("name", res.body.Name.toString());</span>
-<span class="cstat-no" title="statement not covered" >        localStorage.setItem("userId", res.body.UserId.toString());</span>
-<span class="cstat-no" title="statement not covered" >        localStorage.setItem("type", res.body.Type.toString());</span>
+<span class="cstat-no" title="statement not covered" >        localStorage.setItem("user", JSON.stringify(user));</span>
       }
-<span class="cstat-no" title="statement not covered" >      return res;</span>
+<span class="cstat-no" title="statement not covered" >      return user;</span>
     }));
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  signup(</span>name: string, email: string, password: string): Observable&lt;any&gt; {
+<span class="fstat-no" title="function not covered" >  signup(</span>user: NewUser): Observable&lt;any&gt; {
     let apiUrl = <span class="cstat-no" title="statement not covered" >baseUrl + `users`;</span>
-<span class="cstat-no" title="statement not covered" >    return this.http.post&lt;any&gt;(apiUrl,</span>
-      {name: name, email: email, password: password},
-      {observe: "response"});
+<span class="cstat-no" title="statement not covered" >    return this.http.post&lt;any&gt;(apiUrl, user,{observe: "response"});</span>
   }
 &nbsp;
   logout(): void {
     localStorage.removeItem("token");
-    localStorage.removeItem("name");
-    localStorage.removeItem("email");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("type");
+    localStorage.removeItem("user");
   }
 &nbsp;
   isUserLoggedIn(): boolean {
@@ -243,19 +222,19 @@ export class AuthenticationService {
   }
 &nbsp;
   getCurrentUserId(): string | null{
-    return localStorage.getItem("userId");
+    return JSON.parse(localStorage.getItem("user") || <span class="branch-1 cbranch-no" title="branch not covered" >"{}")</span>.userId;
   }
 &nbsp;
   getCurrentUser(): string | null{
-    return localStorage.getItem("name");
+    return JSON.parse(localStorage.getItem("user") || <span class="branch-1 cbranch-no" title="branch not covered" >"{}")</span>.name || <span class="branch-1 cbranch-no" title="branch not covered" >null;</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  getCurrentEmail(</span>): string | null{
-<span class="cstat-no" title="statement not covered" >    return localStorage.getItem("email");</span>
+<span class="cstat-no" title="statement not covered" >    return JSON.parse(localStorage.getItem("user") || "{}").email;</span>
   }
 &nbsp;
   isUserRole(type: string): boolean {
-    return localStorage.getItem("type") === type;
+    return JSON.parse(localStorage.getItem("user") || <span class="branch-1 cbranch-no" title="branch not covered" >"{}")</span>.type === type;
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -265,7 +244,7 @@ export class AuthenticationService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-02T10:22:09.208Z
+                at 2022-11-02T13:58:55.291Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
