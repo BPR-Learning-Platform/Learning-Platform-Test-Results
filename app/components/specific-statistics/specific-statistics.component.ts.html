@@ -249,10 +249,7 @@
 <a name='L184'></a><a href='#L184'>184</a>
 <a name='L185'></a><a href='#L185'>185</a>
 <a name='L186'></a><a href='#L186'>186</a>
-<a name='L187'></a><a href='#L187'>187</a>
-<a name='L188'></a><a href='#L188'>188</a>
-<a name='L189'></a><a href='#L189'>189</a>
-<a name='L190'></a><a href='#L190'>190</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -322,7 +319,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -332,7 +328,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -349,7 +344,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -511,8 +505,7 @@ export class SpecificStatisticsComponent implements OnInit {
 <span class="fstat-no" title="function not covered" >  onGradeSelected(</span>value: string) {
 <span class="cstat-no" title="statement not covered" >    this.gradeSelected = value !== "default";</span>
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if(this.gradeSelected){</span>
-      // @ts-ignore
-<span class="cstat-no" title="statement not covered" >      this.students = this.assignedGrades.find(<span class="fstat-no" title="function not covered" >grade </span>=&gt; <span class="cstat-no" title="statement not covered" >grade.gradeId === value)</span>.students;</span>
+<span class="cstat-no" title="statement not covered" >      this.students = this.assignedGrades.find(<span class="fstat-no" title="function not covered" >grade </span>=&gt; <span class="cstat-no" title="statement not covered" >grade.gradeId === value)</span>!.students;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      this.lpRestService.getSpecificGradeStatistic(value).subscribe(</span>
 <span class="fstat-no" title="function not covered" >        (d</span>ata) =&gt; {
@@ -522,8 +515,7 @@ export class SpecificStatisticsComponent implements OnInit {
 <span class="cstat-no" title="statement not covered" >            chartData.push(statistic.score);</span>
 <span class="cstat-no" title="statement not covered" >            chartLabels.push(this.getWeekNumber(statistic.timeStamp));</span>
           });
-          // @ts-ignore
-          let label = <span class="cstat-no" title="statement not covered" >this.assignedGrades.find(<span class="fstat-no" title="function not covered" >grade </span>=&gt; <span class="cstat-no" title="statement not covered" >grade.gradeId === value)</span>.gradeName</span>
+          let label = <span class="cstat-no" title="statement not covered" >this.assignedGrades.find(<span class="fstat-no" title="function not covered" >grade </span>=&gt; <span class="cstat-no" title="statement not covered" >grade.gradeId === value)</span>!.gradeName</span>
 <span class="cstat-no" title="statement not covered" >          this.updateGradeLine(chartData, chartLabels, label);</span>
 <span class="cstat-no" title="statement not covered" >          this.changeInfo(chartData, label);</span>
         }
@@ -539,8 +531,7 @@ export class SpecificStatisticsComponent implements OnInit {
 <span class="cstat-no" title="statement not covered" >        data.forEach(<span class="fstat-no" title="function not covered" >(s</span>tatistic) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >          chartData.push(statistic.score);</span>
         });
-        // @ts-ignore
-        let label = <span class="cstat-no" title="statement not covered" >this.students.find(<span class="fstat-no" title="function not covered" >(s</span>tudent: { userId: string; }) =&gt; <span class="cstat-no" title="statement not covered" >student.userId === studentId)</span>.name;</span>
+        let label = <span class="cstat-no" title="statement not covered" >this.students.find(<span class="fstat-no" title="function not covered" >(s</span>tudent: { userId: string; }) =&gt; <span class="cstat-no" title="statement not covered" >student.userId === studentId)</span>!.name;</span>
 <span class="cstat-no" title="statement not covered" >        this.updateStudentLine(chartData, label);</span>
 <span class="cstat-no" title="statement not covered" >        this.changeInfo(chartData, label);</span>
       });
@@ -637,7 +628,7 @@ export class SpecificStatisticsComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-02T13:58:55.291Z
+                at 2022-11-09T08:34:00.507Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.33% </span>
+                <span class="strong">59.45% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>21/36</span>
+                <span class='fraction'>22/37</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/7</span>
+                <span class='fraction'>4/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.76% </span>
+                <span class="strong">59.37% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>21/34</span>
+                <span class='fraction'>19/32</span>
             </div>
         
             
@@ -137,9 +137,7 @@
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -164,9 +162,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -182,13 +177,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -209,6 +202,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -241,11 +237,8 @@ const ALERTS: Alert[] = [{
 export class TaskComponent implements OnInit {
 &nbsp;
   tasks: Array&lt;LPTask&gt; = [];
-  taskIndex: number = 0;
-  correctAnswers: number = 0;
   alertToShow?: Alert = undefined;
-  number = '';
-  showHint: boolean = false;
+  taskIndex: number = 0; correctAnswers: number = 0; answer = ''; showHint: boolean = false;
 &nbsp;
   constructor(private lpRestService: LpRestService,
               private router: Router,
@@ -255,23 +248,21 @@ export class TaskComponent implements OnInit {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!this.authService.isUserRole("S"))
 <span class="cstat-no" title="statement not covered" >      this.router.navigateByUrl("/main-statistics").then(<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >window.location.reload())</span>;</span>
     this.getTasks();
-&nbsp;
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  async </span>getNextTask(event: any): Promise&lt;void&gt; {
 <span class="cstat-no" title="statement not covered" >    if (Number(event.target.value) === this.tasks[this.taskIndex].answer) {</span>
 <span class="cstat-no" title="statement not covered" >      this.alertToShow = ALERTS[0];</span>
 <span class="cstat-no" title="statement not covered" >      this.correctAnswers++;</span>
-    } else {
-<span class="cstat-no" title="statement not covered" >      this.alertToShow = ALERTS[1];</span>
-    }
+    } else
+<span class="cstat-no" title="statement not covered" >        this.alertToShow = ALERTS[1];</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    await new Promise(<span class="fstat-no" title="function not covered" >f </span>=&gt; <span class="cstat-no" title="statement not covered" >setTimeout(f, 3000))</span>;</span>
 <span class="cstat-no" title="statement not covered" >    if (this.taskIndex &lt; this.tasks.length - 1)</span>
 <span class="cstat-no" title="statement not covered" >      this.taskIndex++;</span>
     else
 <span class="cstat-no" title="statement not covered" >      this.getTasks();</span>
-<span class="cstat-no" title="statement not covered" >    this.number = '';</span>
+<span class="cstat-no" title="statement not covered" >    this.answer = '';</span>
 <span class="cstat-no" title="statement not covered" >    this.alertToShow = undefined;</span>
   }
 &nbsp;
@@ -286,7 +277,10 @@ export class TaskComponent implements OnInit {
     this.lpRestService.getTasks(this.authService.getCurrentUserId()!, correctPercentage, taskIds).subscribe(<span class="fstat-no" title="function not covered" >res </span>=&gt; {
 <span class="cstat-no" title="statement not covered" >      this.tasks = res;</span>
     });
+    this.reset();
+  }
 &nbsp;
+  reset(): void{
     this.correctAnswers = 0;
     this.taskIndex = 0;
   }
@@ -298,7 +292,7 @@ export class TaskComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-02T13:58:55.291Z
+                at 2022-11-09T08:34:00.507Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
