@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.61% </span>
+                <span class="strong">45.45% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>30/63</span>
+                <span class='fraction'>30/66</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">45.45% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/10</span>
+                <span class='fraction'>5/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40.38% </span>
+                <span class="strong">38.18% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>21/52</span>
+                <span class='fraction'>21/55</span>
             </div>
         
             
@@ -188,7 +188,21 @@
 <a name='L123'></a><a href='#L123'>123</a>
 <a name='L124'></a><a href='#L124'>124</a>
 <a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -228,6 +242,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -318,6 +344,7 @@ import {LpRestService} from "../../services/lp-rest.service";
 import {AuthenticationService} from "../../services/authentication.service";
 import {LPTask, LPTaskScore} from "../../models/lptask.model";
 import {Router} from "@angular/router";
+import { emojisplosion, emojisplosions } from "emojisplosion";
 &nbsp;
 interface Alert {
   type: string;
@@ -354,13 +381,25 @@ export class TaskComponent implements OnInit {
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  async </span>getNextTask(event: any): Promise&lt;void&gt; {
+    const { cancel } = <span class="cstat-no" title="statement not covered" >emojisplosions({</span>
+      emojiCount: <span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >Math.random() * 50 + 50,</span>
+      emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🦄'],
+      physics: {
+        gravity: 0.1,
+        rotationDeceleration: 0.99,
+      },
+      uniqueness: 3,
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    setTimeout(cancel, 4000);</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    if (Number(event.target.value) === this.tasks[this.taskIndex].answer) {</span>
 <span class="cstat-no" title="statement not covered" >      this.alertToShow = ALERTS[0];</span>
 <span class="cstat-no" title="statement not covered" >      this.correct.push(this.tasks[this.taskIndex].taskId);</span>
     } else
 <span class="cstat-no" title="statement not covered" >        this.alertToShow = ALERTS[1];</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    await new Promise(<span class="fstat-no" title="function not covered" >f </span>=&gt; <span class="cstat-no" title="statement not covered" >setTimeout(f, 3000))</span>;</span>
+<span class="cstat-no" title="statement not covered" >    await new Promise(<span class="fstat-no" title="function not covered" >f </span>=&gt; <span class="cstat-no" title="statement not covered" >setTimeout(f, 4000))</span>;</span>
 <span class="cstat-no" title="statement not covered" >    if (this.taskIndex &lt; this.tasks.length - 1)</span>
 <span class="cstat-no" title="statement not covered" >      this.taskIndex++;</span>
     else
@@ -445,7 +484,7 @@ export class TaskComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-09T11:51:23.525Z
+                at 2022-11-09T14:02:45.531Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
