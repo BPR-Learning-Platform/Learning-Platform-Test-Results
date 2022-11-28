@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">45.07% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>30/66</span>
+                <span class='fraction'>32/71</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>0/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">38.46% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/11</span>
+                <span class='fraction'>5/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.18% </span>
+                <span class="strong">37.93% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>21/55</span>
+                <span class='fraction'>22/58</span>
             </div>
         
             
@@ -201,7 +201,12 @@
 <a name='L136'></a><a href='#L136'>136</a>
 <a name='L137'></a><a href='#L137'>137</a>
 <a name='L138'></a><a href='#L138'>138</a>
-<a name='L139'></a><a href='#L139'>139</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -240,6 +245,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -275,6 +283,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -367,7 +377,7 @@ export class TaskComponent implements OnInit {
 &nbsp;
   tasks: Array&lt;LPTask&gt; = [];
   alertToShow?: Alert = undefined;
-  taskIndex: number = 0; answer = ''; showHint: boolean = false;
+  taskIndex: number = 0; answer = ''; showHint: boolean = false; error: any = undefined;
   correct: number[] = [];
 &nbsp;
   constructor(private lpRestService: LpRestService,
@@ -375,8 +385,11 @@ export class TaskComponent implements OnInit {
               private authService: AuthenticationService) { }
 &nbsp;
   ngOnInit(): void {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (!this.authService.isUserRole("S"))
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.authService.isUserRole("T"))
 <span class="cstat-no" title="statement not covered" >      this.router.navigateByUrl("/main-statistics").then(<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >window.location.reload())</span>;</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.authService.isUserRole("A"))
+<span class="cstat-no" title="statement not covered" >      this.router.navigateByUrl("/create-user").then(<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >window.location.reload())</span>;</span>
+&nbsp;
     this.getTasks();
   }
 &nbsp;
@@ -412,8 +425,10 @@ export class TaskComponent implements OnInit {
     const taskIds = [];
     for (let task of this.tasks)
 <span class="cstat-no" title="statement not covered" >      taskIds.push(task.taskId);</span>
-    this.lpRestService.getTasks(this.authService.getCurrentUserId()!, this.getScore(), taskIds).subscribe(<span class="fstat-no" title="function not covered" >res </span>=&gt; {
-<span class="cstat-no" title="statement not covered" >      this.tasks = res;</span>
+    this.lpRestService.getTasks(this.authService.getCurrentUserId()!, this.getScore(), taskIds)
+      .subscribe({
+        next: <span class="fstat-no" title="function not covered" >res </span>=&gt; <span class="cstat-no" title="statement not covered" >this.tasks = res,</span>
+        error: <span class="fstat-no" title="function not covered" >err </span>=&gt; <span class="cstat-no" title="statement not covered" >this.error = err.statusText</span>
     });
     this.reset();
   }
@@ -484,7 +499,7 @@ export class TaskComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-23T09:49:10.306Z
+                at 2022-11-28T12:24:37.055Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

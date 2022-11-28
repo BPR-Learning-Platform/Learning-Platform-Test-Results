@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/24</span>
+                <span class='fraction'>9/27</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">30.76% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/12</span>
+                <span class='fraction'>4/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45% </span>
+                <span class="strong">40.9% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/20</span>
+                <span class='fraction'>9/22</span>
             </div>
         
             
@@ -122,7 +122,9 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -148,6 +150,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -207,8 +211,10 @@ export class LoginComponent implements OnInit {
 &nbsp;
   ngOnInit(): void {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (this.authenticationService.isUserLoggedIn()) {
-<span class="cstat-no" title="statement not covered" >      if (this.authenticationService.isUserRole("T"))</span>
+<span class="cstat-no" title="statement not covered" >      <span class="missing-if-branch" title="if path not taken" >I</span>if (this.authenticationService.isUserRole("T"))</span>
 <span class="cstat-no" title="statement not covered" >        this.router.navigateByUrl("/main-statistics").then(<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >window.location.reload())</span>;</span>
+<span class="cstat-no" title="statement not covered" >      if(this.authenticationService.isUserRole("A"))</span>
+<span class="cstat-no" title="statement not covered" >          this.router.navigateByUrl("/create-user").then(<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >window.location.reload())</span>;</span>
       else
 <span class="cstat-no" title="statement not covered" >        this.router.navigateByUrl("/").then(<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >window.location.reload())</span>;</span>
     }
@@ -225,8 +231,8 @@ export class LoginComponent implements OnInit {
 <span class="fstat-no" title="function not covered" >  get f</span>() { <span class="cstat-no" title="statement not covered" >return this.loginForm.controls; </span>}
 &nbsp;
 <span class="fstat-no" title="function not covered" >  login(</span>): void {
-    let email = <span class="cstat-no" title="statement not covered" >this.f['email'].value!;</span>
-    let password = <span class="cstat-no" title="statement not covered" >this.f['password'].value!;</span>
+    let email = <span class="cstat-no" title="statement not covered" >this.f['email'].value!</span>
+    let password = <span class="cstat-no" title="statement not covered" >this.f['password'].value!</span>
 <span class="cstat-no" title="statement not covered" >    this.authenticationService.login(email.toLowerCase(), password).subscribe({</span>
       next: <span class="fstat-no" title="function not covered" >() =</span>&gt; {
 <span class="cstat-no" title="statement not covered" >        if (this.authenticationService.isUserRole("T"))</span>
@@ -247,7 +253,7 @@ export class LoginComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-23T09:49:10.306Z
+                at 2022-11-28T12:24:37.055Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
